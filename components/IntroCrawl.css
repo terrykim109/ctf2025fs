@@ -1,0 +1,26 @@
+.star-wars-intro {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  color: yellow;
+  font-family: 'Arial', sans-serif;
+  perspective: 400px;
+  text-align: center;
+}
+
+.crawl {
+  position: absolute;
+  bottom: -100%;
+  width: 80%;
+  left: 10%;
+  font-size: 2rem;
+  line-height: 1.5;
+  transform-origin: 50% 100%;
+  animation: crawl 20s linear forwards;
+}
+
+@keyframes crawl {
+  0% { bottom: -100%; transform: rotateX(20deg) translateZ(0); }
+  100% { bottom: 100%; transform: rotateX(25deg) translateZ(-500px); }
+}
