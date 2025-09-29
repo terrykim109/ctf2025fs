@@ -3,13 +3,15 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FlagForm from "./FlagForm";
+import Rocket from "./Rocket";
+import Gundam from "./Gundam";
 
 const correctFlags = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5"
+  "flag1{example}",
+  "flag2{example}",
+  "flag3{example}",
+  "flag4{example}",
+  "flag5{example}"
 ];
 
 const formPositions = [
@@ -19,122 +21,6 @@ const formPositions = [
   { top: "120px", left: "200px" },
   { top: "-40px", left: "0px" },
 ];
-
-// Rocket Component
-const Rocket = ({ width = 100, height = 200 }) => {
-  const primaryColor = "#0055A4";
-  const accentColor = "#00A651";
-  const windowColor = "#B3E0FF";
-
-  return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 100 200"
-      xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-lg"
-    >
-      <defs>
-        <linearGradient id="rocketBody" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor={primaryColor} />
-          <stop offset="100%" stopColor={accentColor} />
-        </linearGradient>
-      </defs>
-
-      <rect x="30" y="40" width="40" height="100" fill="url(#rocketBody)" rx="20" />
-      <path d="M50 20 L70 40 L30 40 Z" fill={primaryColor} />
-      <circle cx="50" cy="80" r="12" fill={windowColor} />
-      <circle cx="50" cy="80" r="6" fill="#E6F7FF" />
-      <circle cx="35" cy="60" r="4" fill={windowColor} />
-      <circle cx="65" cy="60" r="4" fill={windowColor} />
-      <circle cx="35" cy="100" r="4" fill={windowColor} />
-      <circle cx="65" cy="100" r="4" fill={windowColor} />
-      <path d="M30 140 L15 170 L30 150 Z" fill="#003366" />
-      <path d="M70 140 L85 170 L70 150 Z" fill="#003366" />
-      <rect x="30" y="120" width="40" height="3" fill="#FFD700" />
-    </svg>
-  );
-};
-
-// Gundam Component
-const Gundam = ({ width = 120, height = 200 }) => {
-  const primaryColor = "#0055A4";
-  const secondaryColor = "#00A651";
-  const armorColor = "#1a365d";
-  const accentColor = "#e53e3e";
-  const metalColor = "#a0aec0";
-
-  return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 120 200"
-      xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-lg"
-    >
-      <defs>
-        <linearGradient id="gundamBody" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor={primaryColor} />
-          <stop offset="100%" stopColor={secondaryColor} />
-        </linearGradient>
-        <linearGradient id="gundamArmor" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor={armorColor} />
-          <stop offset="100%" stopColor="#2d3748" />
-        </linearGradient>
-        <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#718096" />
-          <stop offset="100%" stopColor="#a0aec0" />
-        </linearGradient>
-      </defs>
-
-      {/* Main body */}
-      <rect x="40" y="60" width="40" height="60" fill="url(#gundamBody)" rx="5" />
-      
-      {/* Chest armor */}
-      <rect x="35" y="50" width="50" height="25" fill="url(#gundamArmor)" rx="8" />
-      
-      {/* F-Men Text on Chest */}
-      <text 
-        x="60" 
-        y="65" 
-        textAnchor="middle" 
-        fill="white" 
-        fontSize="8" 
-        fontFamily="Arial, sans-serif" 
-        fontWeight="bold"
-        style={{ textShadow: '0 0 3px #000' }}
-      >
-        F-MEN
-      </text>
-      
-      {/* Head */}
-      <path d="M50 30 L70 30 L75 45 L65 50 L55 50 L45 45 Z" fill="url(#gundamArmor)" />
-      <rect x="55" y="35" width="10" height="5" fill={accentColor} rx="2" />
-      
-      {/* V-fin antenna */}
-      <path d="M58 25 L62 25 L63 28 L57 28 Z" fill={accentColor} />
-      
-      {/* Shoulder armor */}
-      <rect x="25" y="55" width="15" height="25" fill="url(#gundamArmor)" rx="5" />
-      <rect x="80" y="55" width="15" height="25" fill="url(#gundamArmor)" rx="5" />
-      
-      {/* Arms */}
-      <rect x="20" y="80" width="15" height="35" fill="url(#gundamBody)" rx="5" />
-      <rect x="85" y="80" width="15" height="35" fill="url(#gundamBody)" rx="5" />
-      
-      {/* Legs */}
-      <path d="M45 130 L35 160 L45 170 L50 160 Z" fill="url(#gundamBody)" />
-      <path d="M75 130 L85 160 L75 170 L70 160 Z" fill="url(#gundamBody)" />
-      
-      {/* Feet */}
-      <rect x="30" y="170" width="20" height="10" fill="url(#gundamArmor)" rx="3" />
-      <rect x="70" y="170" width="20" height="10" fill="url(#gundamArmor)" rx="3" />
-      
-      {/* Eye */}
-      <rect x="58" y="37" width="4" height="2" fill="#00FF00" rx="1" />
-    </svg>
-  );
-};
 
 export default function RocketScene() {
   const [flags, setFlags] = useState([false, false, false, false, false]);
@@ -165,23 +51,26 @@ export default function RocketScene() {
 
   useEffect(() => {
     if (flags.every(Boolean) && !transforming && !transformed) {
+      // Start transformation sequence
       setTransforming(true);
       setTimeout(() => {
         setTransformed(true);
         setTransforming(false);
-      }, 2000);
+      }, 2000); // Transformation duration
     }
   }, [flags, transforming, transformed]);
 
+  // Launch after transformation
   useEffect(() => {
     if (transformed) {
       const launchTimer = setTimeout(() => {
         setTakeoff(true);
-      }, 3000);
+      }, 3000); // Wait 3 seconds after transformation before launch
       return () => clearTimeout(launchTimer);
     }
   }, [transformed]);
 
+  // Show forms after landing
   useEffect(() => {
     if (landed) {
       const formsTimer = setTimeout(() => {
@@ -210,7 +99,7 @@ export default function RocketScene() {
         ))}
       </div>
 
-      {/* Moon surface */}
+      {/* Moon surface - appears when rocket lands */}
       {showLand && !takeoff && (
         <motion.div 
           initial={{ scaleY: 0 }}
@@ -218,19 +107,30 @@ export default function RocketScene() {
           transition={{ duration: 0.5 }}
           className="absolute bottom-0 w-[140%] h-48 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-t-[100%] z-10 -left-[20%] origin-bottom"
         >
+          {/* Moon craters */}
           <div className="absolute w-20 h-20 bg-gray-800 rounded-full top-8 left-[25%] opacity-60"></div>
           <div className="absolute w-12 h-12 bg-gray-800 rounded-full top-12 left-[65%] opacity-60"></div>
           <div className="absolute w-16 h-16 bg-gray-800 rounded-full top-4 left-[45%] opacity-60"></div>
         </motion.div>
       )}
 
-      {/* Vehicle Container */}
+      {/* Vehicle Container - Same element transforms */}
       <motion.div
-        initial={{ y: "-50vh", x: "50%" }}
-        animate={{ y: takeoff ? "-100vh" : "calc(100vh - 250px)" }}
-        transition={{ duration: takeoff ? 2 : 4, ease: takeoff ? "easeIn" : "easeOut" }}
+        initial={{ 
+          y: "-50vh",
+          x: "50%",
+        }}
+        animate={{ 
+          y: takeoff ? "-100vh" : "calc(100vh - 250px)",
+        }}
+        transition={{ 
+          duration: takeoff ? 2 : 4,
+          ease: takeoff ? "easeIn" : "easeOut" 
+        }}
         className="absolute top-0 left-1/2 z-20"
-        style={{ transform: "translateX(-50%)" }}
+        style={{
+          transform: "translateX(-50%)"
+        }}
         onAnimationComplete={() => {
           if (!landed && !takeoff) {
             setLanded(true);
@@ -239,8 +139,8 @@ export default function RocketScene() {
         }}
       >
         <AnimatePresence mode="wait">
-          {/* Rocket */}
-          {showRocket && !transformed && !transforming && (
+          {/* Rocket - shows before transformation */}
+          {!transformed && !transforming && (
             <motion.div
               key="rocket"
               initial={{ scale: 1, opacity: 1 }}
@@ -249,17 +149,26 @@ export default function RocketScene() {
               className="relative"
             >
               <Rocket width={100} height={200} />
-              {landed && (
+              
+              {/* Landing flame */}
+              {landed && !transforming && (
                 <motion.div
-                  animate={{ scaleY: [0.8, 1.2, 0.8], opacity: [0.7, 1, 0.7] }}
-                  transition={{ repeat: Infinity, duration: 0.3 }}
+                  initial={{ scaleY: 0, opacity: 0 }}
+                  animate={{ 
+                    scaleY: [0.8, 1.2, 0.8],
+                    opacity: [0.7, 1, 0.7]
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 0.3 
+                  }}
                   className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-6 h-12 bg-gradient-to-t from-orange-500 via-yellow-400 to-transparent rounded-full"
                 />
               )}
             </motion.div>
           )}
 
-          {/* Transformation */}
+          {/* Transformation Animation */}
           {transforming && (
             <motion.div
               key="transforming"
@@ -269,11 +178,21 @@ export default function RocketScene() {
               transition={{ duration: 0.5 }}
               className="relative"
             >
+              {/* Glowing orb during transformation */}
               <motion.div
-                animate={{ scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7], rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity }}
+                animate={{ 
+                  scale: [1, 1.5, 1],
+                  opacity: [0.7, 1, 0.7],
+                  rotate: 360
+                }}
+                transition={{ 
+                  duration: 1,
+                  repeat: Infinity
+                }}
                 className="w-32 h-32 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl absolute -inset-4"
               />
+              
+              {/* Rocket shell breaking apart */}
               <motion.div
                 initial={{ scale: 1, opacity: 1 }}
                 animate={{ scale: 0.8, opacity: 0 }}
@@ -282,6 +201,8 @@ export default function RocketScene() {
               >
                 <Rocket width={100} height={200} />
               </motion.div>
+              
+              {/* Emerging Gundam */}
               <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -293,23 +214,41 @@ export default function RocketScene() {
             </motion.div>
           )}
 
-          {/* Gundam */}
-          {transformed && (
+          {/* Gundam - after transformation */}
+          {transformed && !takeoff && (
             <motion.div
               key="gundam"
               initial={{ scale: 1, opacity: 1 }}
-              animate={{ scale: [1, 1.05, 1], y: [0, -5, 0] }}
-              transition={{ duration: 2, repeat: takeoff ? 0 : Infinity }}
+              animate={{ 
+                scale: [1, 1.05, 1],
+                y: [0, -5, 0]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity
+              }}
               className="relative"
             >
               <Gundam width={120} height={200} />
-              {takeoff && (
-                <motion.div
-                  animate={{ scaleY: [0.5, 1.5] }}
-                  transition={{ repeat: Infinity, duration: 0.2, yoyo: Infinity }}
-                  className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-8 h-16 bg-gradient-to-t from-blue-500 via-cyan-400 to-transparent rounded-full"
-                />
-              )}
+            </motion.div>
+          )}
+
+          {/* Gundam with thrusters during launch */}
+          {takeoff && (
+            <motion.div
+              key="gundam-launch"
+              initial={{ scale: 1, opacity: 1 }}
+              className="relative"
+            >
+              <Gundam width={120} height={200} />
+              
+              {/* Gundam thrusters */}
+              <motion.div
+                initial={{ scaleY: 0.5 }}
+                animate={{ scaleY: 1.5 }}
+                transition={{ repeat: Infinity, duration: 0.2, yoyo: Infinity }}
+                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-8 h-16 bg-gradient-to-t from-blue-500 via-cyan-400 to-transparent rounded-full"
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -318,19 +257,32 @@ export default function RocketScene() {
       {/* Transformation particles */}
       {transforming && (
         <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-30">
-          {Array.from({ length: 30 }).map((_, i) => (
+          {Array.from({ length: 50 }).map((_, i) => (
             <motion.div
               key={i}
-              initial={{ scale: 0, opacity: 1, x: 0, y: 0 }}
-              animate={{ scale: [0, 1, 0], opacity: [1, 1, 0], x: Math.cos(i * 0.2) * 150, y: Math.sin(i * 0.2) * 150 }}
-              transition={{ duration: 2, delay: i * 0.05 }}
+              initial={{ 
+                scale: 0, 
+                opacity: 1,
+                x: 0,
+                y: 0
+              }}
+              animate={{ 
+                scale: [0, 1, 0],
+                opacity: [1, 1, 0],
+                x: Math.cos(i * 0.125) * 200,
+                y: Math.sin(i * 0.125) * 200
+              }}
+              transition={{ 
+                duration: 2,
+                delay: i * 0.05
+              }}
               className="absolute w-2 h-2 bg-cyan-400 rounded-full"
             />
           ))}
         </div>
       )}
 
-      {/* Flag forms */}
+      {/* Flag forms - show after landing */}
       {showForms && !transformed && (
         <div className="absolute z-30 w-full h-full">
           {flags.map((solved, i) => (
@@ -338,7 +290,12 @@ export default function RocketScene() {
               key={i}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: i * 0.3, duration: 0.5, type: "spring", stiffness: 100 }}
+              transition={{ 
+                delay: i * 0.3, 
+                duration: 0.5,
+                type: "spring",
+                stiffness: 100
+              }}
               className="absolute"
               style={{
                 top: `calc(100vh - 250px + ${formPositions[i].top})`,
@@ -351,7 +308,7 @@ export default function RocketScene() {
         </div>
       )}
 
-      {/* Messages */}
+      {/* Transformation message */}
       {transforming && (
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -359,11 +316,12 @@ export default function RocketScene() {
           className="absolute top-1/4 left-1/2 transform -translate-x-1/2 z-40 text-center"
         >
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-3xl font-bold p-6 rounded-2xl shadow-2xl border-4 border-white mb-4">
-            🔄 TRANSFORMATION IN PROGRESS! ⚡
+            ⚡ Powering Up! ⚡
           </div>
         </motion.div>
       )}
 
+      {/* Post-transformation message */}
       {transformed && !takeoff && (
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -375,11 +333,12 @@ export default function RocketScene() {
             🤖 F-MEN ACTIVATED! 🚀
           </div>
           <div className="text-white text-xl bg-black/50 p-4 rounded-lg">
-            Gundam transformation complete! Preparing for launch...
+            Preparing for launch...
           </div>
         </motion.div>
       )}
 
+      {/* Launch message */}
       {takeoff && (
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
