@@ -375,7 +375,7 @@ export default function RocketScene() {
             🤖 F-MEN ACTIVATED! 🚀
           </div>
           <div className="text-white text-xl bg-black/50 p-4 rounded-lg">
-            Gundam transformation complete! Preparing for launch...
+            Preparing for launch...
           </div>
         </motion.div>
       )}
@@ -388,7 +388,7 @@ export default function RocketScene() {
         >
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-4xl font-bold p-8 rounded-2xl shadow-2xl border-4 border-white text-center">
             🚀 F-MEN LAUNCH! 🎉<br />
-            <span className="text-2xl">Mission Accomplished!</span>
+            <span className="text-2xl">You save the world!</span>
           </div>
         </motion.div>
       )}
