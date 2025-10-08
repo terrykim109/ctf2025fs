@@ -25,12 +25,12 @@ function IntroCrawl({ onFinish }) {
           <p>
             Fundserv has formed F-Men to save the world...
           </p>
-          <p>
+          {/* <p>
             We are sending our last hope to the past...
           </p>
           <p>
             You can help by capturing all five flags...
-          </p>
+          </p> */}
           <p>
             Are you up for the challenge?
           </p>
