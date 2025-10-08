@@ -193,41 +193,60 @@ export default function RocketScene() {
 
   return (
     <div className="relative w-full h-screen bg-gradient-to-b from-gray-900 to-black overflow-hidden">
-      {/* Description Banner */}
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="absolute top-0 left-0 right-0 z-50 bg-gradient-to-r from-cyan-600/95 via-blue-600/95 to-purple-600/95 backdrop-blur-md border-b-2 border-cyan-400 shadow-2xl"
-      >
-        <div className="max-w-5xl mx-auto px-6 py-5 text-center">
-          <h2 className="text-3xl font-bold text-white mb-3 flex items-center justify-center gap-2">
-            🚀 Welcome to FundServ CTF Challenge!
-          </h2>
-          <p className="text-cyan-50 text-base leading-relaxed mb-3">
-            <span className="font-semibold text-yellow-300">Step 1:</span> Visit{" "}
-            <a 
-              href="https://fundserv.ctfd.io/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="font-bold text-white underline decoration-2 decoration-cyan-300 hover:decoration-yellow-300 hover:text-yellow-200 transition-all duration-200"
-            >
-              fundserv.ctfd.io
-            </a>{" "}
-            and click <span className="font-semibold text-white bg-cyan-700/60 px-2 py-0.5 rounded">Register</span> in the top right corner.
-          </p>
-          <p className="text-cyan-50 text-base leading-relaxed mb-3">
-            <span className="font-semibold text-yellow-300">Step 2:</span> Create your account by choosing a username, entering your email, and setting a password.
-          </p>
-          <p className="text-cyan-50 text-base leading-relaxed mb-3">
-            <span className="font-semibold text-yellow-300">Step 3:</span> Check your email for a verification link and verify your account.
-          </p>
-          <p className="text-cyan-50 text-base leading-relaxed">
-            <span className="font-semibold text-yellow-300">Step 4:</span> Start solving CTF challenges and climb the{" "}
-            <span className="font-semibold text-white bg-purple-700/60 px-2 py-0.5 rounded">🏆 Leaderboard</span>!
-          </p>
-        </div>
-      </motion.div>
+      {/* Description Banner - Positioned near flag forms */}
+      {showForms && !transformed && (
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 100 }}
+          className="absolute z-40 bg-gradient-to-br from-cyan-600/95 via-blue-600/95 to-purple-600/95 backdrop-blur-md border-2 border-cyan-400 shadow-2xl rounded-xl"
+          style={{
+            top: "calc(100vh - 450px)",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "90%",
+            maxWidth: "600px"
+          }}
+        >
+          <div className="px-6 py-5">
+            <h2 className="text-2xl font-bold text-white mb-3 text-center flex items-center justify-center gap-2">
+              🚀 Welcome to FundServ CTF!
+            </h2>
+            <div className="text-cyan-50 text-sm leading-relaxed space-y-2">
+              <p>
+                <span className="font-semibold text-yellow-300">Step 1:</span> Visit{" "}
+                <a 
+                  href="https://fundserv.ctfd.io/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="font-bold text-white underline decoration-2 decoration-cyan-300 hover:decoration-yellow-300 hover:text-yellow-200 transition-all duration-200"
+                >
+                  fundserv.ctfd.io
+                </a>{" "}
+                and click <span className="font-semibold text-white bg-cyan-700/60 px-1.5 py-0.5 rounded">Register</span> (top right).
+              </p>
+              <p>
+                <span className="font-semibold text-yellow-300">Step 2:</span> Create your account with a username, email, and password.
+              </p>
+              <p>
+                <span className="font-semibold text-yellow-300">Step 3:</span> Verify your account via the email link sent to you.
+              </p>
+              <p>
+                <span className="font-semibold text-yellow-300">Step 4:</span> Solve CTF challenges and climb the{" "}
+                <span className="font-semibold text-white bg-purple-700/60 px-1.5 py-0.5 rounded">🏆 Leaderboard</span>!
+              </p>
+              <div className="mt-4 pt-3 border-t border-cyan-400/50">
+                <p className="text-center font-semibold text-yellow-200">
+                  🎯 Side Mission: Collect all 5 CTF coding flags below to transform your rocket into a powerful robot!
+                </p>
+                <p className="text-center text-cyan-100 text-xs mt-1">
+                  Complete the mission and launch your robot into the future to save the world! 🌍✨
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
       {/* Stars */}
       <div className="absolute inset-0">
         {Array.from({ length: 100 }).map((_, i) => (
