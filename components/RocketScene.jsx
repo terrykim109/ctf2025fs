@@ -193,7 +193,7 @@ export default function RocketScene() {
 
   return (
     <div className="relative w-full h-screen bg-gradient-to-b from-gray-900 to-black overflow-hidden">
-      {/* Description Banner - Positioned near flag forms */}
+      {/* Description Banner */}
       {showForms && !transformed && (
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -201,18 +201,18 @@ export default function RocketScene() {
           transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 100 }}
           className="absolute z-40 bg-gradient-to-br from-cyan-600/95 via-blue-600/95 to-purple-600/95 backdrop-blur-md border-2 border-cyan-400 shadow-2xl rounded-xl"
           style={{
-            top: "calc(100vh - 450px)",
+            top: `calc(100vh - 250px + ${formPositions[2].top})`,
             left: "50%",
             transform: "translateX(-50%)",
             width: "90%",
-            maxWidth: "600px"
+            maxWidth: "550px"
           }}
         >
-          <div className="px-6 py-5">
-            <h2 className="text-2xl font-bold text-white mb-3 text-center flex items-center justify-center gap-2">
+          <div className="px-5 py-4">
+            <h2 className="text-xl font-bold text-white mb-2 text-center flex items-center justify-center gap-2">
               🚀 Welcome to FundServ CTF!
             </h2>
-            <div className="text-cyan-50 text-sm leading-relaxed space-y-2">
+            <div className="text-cyan-50 text-xs leading-relaxed space-y-1.5">
               <p>
                 <span className="font-semibold text-yellow-300">Step 1:</span> Visit{" "}
                 <a 
@@ -235,11 +235,11 @@ export default function RocketScene() {
                 <span className="font-semibold text-yellow-300">Step 4:</span> Solve CTF challenges and climb the{" "}
                 <span className="font-semibold text-white bg-purple-700/60 px-1.5 py-0.5 rounded">🏆 Leaderboard</span>!
               </p>
-              <div className="mt-4 pt-3 border-t border-cyan-400/50">
-                <p className="text-center font-semibold text-yellow-200">
+              <div className="mt-3 pt-2 border-t border-cyan-400/50">
+                <p className="text-center font-semibold text-yellow-200 text-xs">
                   🎯 Side Mission: Collect all 5 CTF coding flags below to transform your rocket into a powerful robot!
                 </p>
-                <p className="text-center text-cyan-100 text-xs mt-1">
+                <p className="text-center text-cyan-100 text-[10px] mt-1">
                   Complete the mission and launch your robot into the future to save the world! 🌍✨
                 </p>
               </div>
@@ -247,6 +247,7 @@ export default function RocketScene() {
           </div>
         </motion.div>
       )}
+
       {/* Stars */}
       <div className="absolute inset-0">
         {Array.from({ length: 100 }).map((_, i) => (
